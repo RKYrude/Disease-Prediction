@@ -1,0 +1,27 @@
+// *{
+//     padding: 0px;
+//     margin: 0px;
+// }
+
+.symptomSearchbar {
+
+    .searchbar {
+        color: red;
+    }
+
+    .suggestions{
+
+        width: max-content;
+        height: 300px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        padding: 3px;
+
+
+        p{
+            margin: 0px;
+            border: 1px solid black;
+            width: 100%;
+        }
+    }
+}

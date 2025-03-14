@@ -1,7 +1,11 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 import numpy as np
 import pandas as pd
 import pickle
+import sklearn
+
+print(sklearn.__version__)
+
 
 # Load Datasets with error handling
 try:
@@ -16,7 +20,7 @@ except Exception as e:
 
 # Load Model with error handling
 try:
-    svc = pickle.load(open('models/svc.pkl', 'rb'))
+    svc = pickle.load(open('./models/svc.pkl', 'rb'))
 except Exception as e:
     print(f"Error loading model: {e}")
     svc = None
@@ -106,10 +110,6 @@ def get_predicted_disease(symptoms):
 
 
 # Routes
-@app.route('/')
-def index():
-    return render_template('index.html')
-
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -117,45 +117,24 @@ def predict():
         symptoms = request.form.get('symptoms', "").strip().lower()
 
         if not symptoms:
-            return render_template('index.html', error="Please enter symptoms.")
+            return jsonify({"error": "Please enter symptoms."}), 400
 
         user_symptoms = [s.strip() for s in symptoms.split(',')]
         predicted_disease = get_predicted_disease(user_symptoms)
 
         if predicted_disease == "Unknown Disease":
-            return render_template('index.html', error="Disease could not be predicted. Please check your symptoms.")
+            return jsonify({"error": "Disease could not be predicted. Please check your symptoms."}), 400
 
         desc, pre, med, diet, adv = get_disease_info(predicted_disease)
 
-        return render_template(
-            'index.html',
-            predicted_disease=predicted_disease,
-            dis_des=desc,
-            dis_pre=pre,
-            dis_med=med,
-            my_diet=diet,
-            dis_adv=adv
-        )
-
-
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
-
-@app.route('/contact')
-def contact():
-    return render_template('contact.html')
-
-
-@app.route('/developer')
-def developer():
-    return render_template('developer.html')
-
-
-@app.route('/blog')
-def blog():
-    return render_template('blog.html')
+        return jsonify({
+            "predicted_disease": predicted_disease,
+            "description": desc,
+            "precaution": pre,
+            "medication": med,
+            "diet": diet,
+            "advice": adv
+        }), 200
 
 
 if __name__ == "__main__":

@@ -1,0 +1,62 @@
+.diagnosisType-container {
+    display: flex;
+    background-color: #454444;
+    padding: 18px;
+    gap: 20px;
+    border-radius: 20px;
+
+    .diagnosisTypeButton {
+        display: flex;
+        flex-direction: column;
+        gap: 35px;
+
+        button {
+            font-size: medium;
+            font-weight: 900;
+            text-align: left;
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: none;
+            color: white;
+
+            &:nth-child(1) {
+                background-color: #FF6B6B;
+            }
+
+            &:nth-child(2) {
+                background-color: #9A9A9A;
+            }
+
+            &:nth-child(3) {
+                background-color: #D3B200;
+            }
+
+            &:nth-child(4) {
+                background-color: #4CAF50;
+            }
+
+            &:nth-child(5) {
+                background-color: #4682B4;
+            }
+
+            &:nth-child(6) {
+                background-color: #FFA500;
+            }
+        }
+    }
+
+    .diagnosisDisplay {
+        background-color: white;
+        width: 100%;
+        border-radius: 15px;
+        display: flex;
+        
+        h3{
+            font-family: sans-serif;
+            justify-self: center;
+            align-self: center;
+            text-align: center;
+            flex: 1;
+        }
+    }
+}

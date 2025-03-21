@@ -1,5 +1,5 @@
-import "./SymptomSearch.scss"
-import { useState } from "react";
+import "./styles/SymptomSearch.scss"
+import { useRef, useState } from "react";
 
 export default function SymptomSearch(props) {
 
@@ -15,29 +15,41 @@ export default function SymptomSearch(props) {
     function handleSelectSuggestion(suggestion) {
         props.setSelectedSymptoms([...props.selectedSymptoms, suggestion])
         setShowSuggestions(false); // Hide suggestions
+        
     }
 
     return (
         <div className="symptomSearchbar">
-            <input
-                type="text"
-                value={inputValue}
-                onChange={handleInputChange}
-                onFocus={() => inputValue && setShowSuggestions(true)}
-                onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-                placeholder="Search..."
-                className="searchbar"
-            />
+            <section className="searchbar-container">
+
+                <input
+                    className="searchbar"
+                    type="text"
+                    placeholder="e.g vomiting"
+                    value={inputValue}
+                    onChange={handleInputChange}
+                    onFocus={() => inputValue && setShowSuggestions(true)}
+                    onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
+
+                />
+                {/* green circle */}
+                <div className="green-circle"></div>
+            </section>
+
 
             {showSuggestions && (
-                <div className="suggestions">
-                    {props.symptoms
-                        .filter(item => item.toLowerCase().includes(inputValue.toLowerCase()))
-                        .map((item, index) => (
-                            <p key={index} onMouseDown={() => handleSelectSuggestion(item)}>
-                                {item}
-                            </p>
-                        ))}
+                <div className="suggestionContainer">
+
+                    <div className="suggestions">
+                        {props.symptoms
+                            .filter(item => item.toLowerCase().includes(inputValue.toLowerCase()))
+                            .map((item, index) => (
+                                <p key={index} onMouseDown={() => handleSelectSuggestion(item)}>
+                                    {item}
+                                </p>
+                            ))
+                        }
+                    </div>
                 </div>
             )}
         </div>

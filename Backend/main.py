@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template, jsonify
+from flask_cors import CORS
 import numpy as np
 import pandas as pd
 import pickle
@@ -26,6 +27,7 @@ except Exception as e:
     svc = None
 
 app = Flask(__name__)
+CORS(app, origins=["http://localhost:5173"], supports_credentials=True)
 
 
 # Helper function to retrieve disease details
@@ -111,13 +113,13 @@ def get_predicted_disease(symptoms):
 
 # Routes
 
-@app.route('/predict', methods=['POST'])
+@app.route('/predict', methods=['POST', 'OPTIONS'])
 def predict():
+    if request.method == 'OPTIONS':
+        return '', 200
+
     if request.method == 'POST':
         symptoms = request.form.get('symptoms', "").strip().lower()
-
-        if not symptoms:
-            return jsonify({"error": "Please enter symptoms."}), 400
 
         user_symptoms = [s.strip() for s in symptoms.split(',')]
         predicted_disease = get_predicted_disease(user_symptoms)

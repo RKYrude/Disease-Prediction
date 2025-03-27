@@ -22,19 +22,19 @@ function About() {
             <div className="developer-section">
                 <h2>Our Team</h2>
                 <div className="developer">
-                    <img src="https://cdn-icons-png.flaticon.com/512/147/147144.png" alt="Ujjwal Profile" />
+                    <img src="https://shorturl.at/9eQXx" alt="Ujjwal Profile" />
                     <div className="developer-info">
-                        <p className="name">Ujjwal</p>
-                        <p className="role">AI/ML Specialist</p>
-                        <p className="contact">📞 123456789</p>
+                        <p className="name">Ujjwal Parida</p>
+                        <p className="role">AI/ML Developer</p>
+                        <p className="contact">📞 +91 9692093365</p>
                     </div>
                 </div>
-                <div className="developer">
-                    <img src="https://cdn-icons-png.flaticon.com/512/147/147144.png" alt="Sourashis Profile" />
+                <div className="developer" onClick={() => window.location.href = "https://rkyrude.github.io"}>
+                    <img src="https://rkyrude.github.io/Assets/RKY-blur.png" alt="Sourashis Profile" />
                     <div className="developer-info">
-                        <p className="name">Sourashis</p>
+                        <p className="name">Sourashis Das</p>
                         <p className="role">Web Developer</p>
-                        <p className="contact">📞 123456789</p>
+                        <p className="contact">📞 +91 7628009481</p>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/home/ricky/Desktop/Disease Prediction Website/Backend/venv/bin/python3" "$0" "$@"
+'''exec' "/home/ricky/Desktop/Coding/HTML Porfolio Project/projects/Backend Projects(Node+Express)/Disease Prediction Website/Backend/venv/bin/python3" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re

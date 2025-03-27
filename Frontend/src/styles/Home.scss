@@ -116,6 +116,10 @@
       background-color: #004AAD;
       margin-top: 30px;
       text-align: center;
+
+      &:disabled{
+        background-color: #686d99;
+      }
     }
   }
 

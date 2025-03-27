@@ -5,12 +5,13 @@
     gap: 20px;
     border-radius: 20px;
     position: relative;
-    height: 430px;
+    height: 448px;
 
     .diagnosisTypeButton {
         display: flex;
         flex-direction: column;
-        gap: 35px;
+        // gap: 35px;
+        justify-content: space-between;
 
         button {
             // max-width: 165px;

@@ -13,6 +13,7 @@ export default function SymptomSearch(props) {
     }
 
     function handleSelectSuggestion(suggestion) {
+        
         props.setSelectedSymptoms([...props.selectedSymptoms, suggestion])
         setShowSuggestions(false); // Hide suggestions
         

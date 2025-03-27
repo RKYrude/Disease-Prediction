@@ -29,14 +29,15 @@ export default function DiagnosisView(props) {
                     break;
 
                 case 'PRECAUTION':
-                    // setDiagnosisTexts(<h1>props.diseaseData.precaution</h1>);
                     setDiagnosisTexts(
                         <ul>
-                            {props.diseaseData.precaution.map((item, index) => (
-                                <li key={index}>
-                                    {item}.
-                                </li>
-                            ))}
+                            {props.diseaseData.precaution.map((item, index) =>
+                                item !== "N/A" && (
+                                    <li key={index}>
+                                        {item.charAt(0).toUpperCase() + item.slice(1)}.
+                                    </li>
+                                )
+                            )}
                         </ul>
                     );
                     break;
@@ -46,11 +47,29 @@ export default function DiagnosisView(props) {
                     break;
 
                 case 'MEDICATION':
-                    setDiagnosisTexts(props.diseaseData.medication);
+                    // setDiagnosisTexts(props.diseaseData.medication);
+                    setDiagnosisTexts(
+                        <ul>
+                            {props.diseaseData.medication.map((item, index) => (
+                                <li key={index}>
+                                    {item.charAt(0).toUpperCase() + item.slice(1)}.
+                                </li>
+                            ))}
+                        </ul>
+                    );
                     break;
 
                 case 'DIET':
-                    setDiagnosisTexts(props.diseaseData.diet);
+                    // setDiagnosisTexts(props.diseaseData.diet);
+                    setDiagnosisTexts(
+                        <ul>
+                            {props.diseaseData.diet.map((item, index) => (
+                                <li key={index}>
+                                    {item.charAt(0).toUpperCase() + item.slice(1)}.
+                                </li>
+                            ))}
+                        </ul>
+                    );
                     break;
 
             }
@@ -62,9 +81,6 @@ export default function DiagnosisView(props) {
             clickedButton.style.justifyContent = 'right'
 
             setBgColr(buttonColor)
-
-            console.log(diagnosisTexts);
-
 
         }
     }

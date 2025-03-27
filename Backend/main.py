@@ -5,9 +5,6 @@ import pandas as pd
 import pickle
 import sklearn
 
-print(sklearn.__version__)
-
-
 # Load Datasets with error handling
 try:
     sys_def = pd.read_csv("dataset/symptoms.csv")
@@ -30,22 +27,31 @@ app = Flask(__name__)
 CORS(app, origins=["http://localhost:5173"], supports_credentials=True)
 
 
-# Helper function to retrieve disease details
 def get_disease_info(disease):
-    desc = description.loc[description['Disease'] == disease, 'Description'].values
-    pre = precautions.loc[
-        precautions['Disease'] == disease, ['Precaution_1', 'Precaution_2', 'Precaution_3', 'Precaution_4']].values
-    med = medications.loc[medications['Disease'] == disease, 'Medication'].values
-    diet = diets.loc[diets['Disease'] == disease, 'Diet'].values
-    adv = advices.loc[advices['Disease'] == disease, 'Advices'].values
+    # Get description
+    desc = description.loc[description['Disease'] == disease, 'Description'].astype(str)
+    desc = desc.iloc[0] if not desc.empty else "No description available."
 
-    return (
-        desc[0] if len(desc) > 0 else "No description available.",
-        pre.tolist()[0] if len(pre) > 0 else ["No precautions available."],
-        med.tolist() if len(med) > 0 else ["No medications available."],
-        diet.tolist() if len(diet) > 0 else ["No diet recommendations available."],
-        adv[0] if len(adv) > 0 else "No advice available."
-    )
+    # Get precautions
+    pre = precautions.loc[precautions['Disease'] == disease, ['Precaution_1', 'Precaution_2', 'Precaution_3', 'Precaution_4']]
+    pre = pre.fillna('N/A').values.flatten().tolist() if not pre.empty else ["No precautions available."]
+
+    # Get medications
+    med = medications.loc[medications['Disease'] == disease, ['Medication_1', 'Medication_2', 'Medication_3', 'Medication_4', 'Medication_5']]
+    med = med.fillna('N/A').values.flatten().tolist() if not med.empty else ["No medications available."]
+
+    # Get diet recommendations
+    diet = diets.loc[diets['Disease'] == disease, ['Diet_1', 'Diet_2', 'Diet_3', 'Diet_4', 'Diet_5']]
+    diet = diet.fillna('N/A').values.flatten().tolist() if not diet.empty else ["No diet recommendations available."]
+
+    # Get advice
+    adv = advices.loc[advices['Disease'] == disease, 'Advices'].astype(str)
+    adv = adv.iloc[0] if not adv.empty else "No advice available."
+
+    return desc, pre, med, diet, adv
+
+
+
 
 
 # Load Symptom and Disease Mappings
@@ -113,10 +119,10 @@ def get_predicted_disease(symptoms):
 
 # Routes
 
-@app.route('/predict', methods=['POST', 'OPTIONS'])
+@app.route('/predict', methods=['POST'])
 def predict():
-    if request.method == 'OPTIONS':
-        return '', 200
+    # if request.method == 'OPTIONS':
+    #     return '', 200
 
     if request.method == 'POST':
         symptoms = request.form.get('symptoms', "").strip().lower()

@@ -1,0 +1,63 @@
+# -------------------------
+# Python / Flask ignores
+# -------------------------
+venv/
+.env
+*.pyc
+__pycache__/
+instance/
+*.pkl
+*.sqlite3
+*.db
+
+# Flask specific
+*.log
+
+# Jupyter
+.ipynb_checkpoints/
+
+# -------------------------
+# Node / React ignores
+# -------------------------
+node_modules/
+dist/
+build/
+.cache/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env.local
+.env.development.local
+.env.production.local
+.env.test.local
+
+# React local config
+*.pem
+
+# -------------------------
+# OS files
+# -------------------------
+.DS_Store
+Thumbs.db
+
+# -------------------------
+# Package managers
+# -------------------------
+package-lock.json
+.pnp
+.pnp.js
+
+# -------------------------
+# IDE / Editor ignores
+# -------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# -------------------------
+# Misc
+# -------------------------
+*.bak

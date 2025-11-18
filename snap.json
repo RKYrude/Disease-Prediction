@@ -1,0 +1,19 @@
+{
+  "predicted_disease": "Bronchial Asthma",
+  "description": "A respiratory condition marked by spasms in the bronchi...",
+  "precaution": [
+    "avoid allergens",
+    "use inhalers",
+    "stay hydrated"
+  ],
+  "medication": [
+    "albuterol",
+    "salbutamol"
+  ],
+  "diet": [
+    "high-protein",
+    "no cold food",
+    "warm fluids"
+  ],
+  "advice": "Visit a pulmonologist if symptoms persist."
+}

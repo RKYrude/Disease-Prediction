@@ -9,7 +9,7 @@ export default function Sidebar(props) {
         <div className="sidebar-cont">
             <div className="logoTitle-cont" onClick={() => navigate("/")}>
                 <img src="./logo.png" alt="" />
-                <h4>RiWal Med AI</h4>
+                <h4>Medntel</h4>
             </div>
 
             <section >

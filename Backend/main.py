@@ -118,11 +118,8 @@ def get_predicted_disease(symptoms):
 
 
 # Routes
-
 @app.route('/predict', methods=['POST'])
 def predict():
-    # if request.method == 'OPTIONS':
-    #     return '', 200
 
     if request.method == 'POST':
         symptoms = request.form.get('symptoms', "").strip().lower()

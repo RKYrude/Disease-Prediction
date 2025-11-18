@@ -35,15 +35,13 @@ Follow the steps below to run the project locally.
 ```bash
 git clone https://github.com/RKYrude/Disease-Prediction
 ```
-## 2. Navigate to the project directory
+## 2. **Navigate to the project directory***
 ```md
 cd Disease-Prediction
 ```
 
-```md
-## 3. Install Dependencies
-```
 
+## 3. **Install Dependencies**
 ### A. Install Frontend Dependencies
 ```bash
 cd Frontend
@@ -63,13 +61,19 @@ cd ../Backend
 pip install flask flask-cors numpy pandas scikit-learn
 ```
 
-## 4. Run the Backend Server
+## 4. **Run the Backend Server**
 Make sure your virtual environment is activated, then run:
 ```bash
 cd Backend
 python main.py
 ```
 
+## 5. Run the Frontend Application
+Start the React development server:
+```bash
+cd ../Frontend
+npm run dev
+```
 
 
 

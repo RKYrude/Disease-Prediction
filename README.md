@@ -1,31 +1,3 @@
-This is a disease prediction website for my final year project, where you can input symptoms and the AI model will output predicted disease with disease description, precaution etc,
-
-Installation
-1. Clone the repository
-     > git clone https://github.com/RKYrude/Disease-Prediction
-     
-3. navigate to the project directory
-     > cd Disease-Prediction
-     
-4. Install Dependencies
-     a. Frontend
-         > npm install
-   
-     b. Create and activate Venv (Bashh)
-         > python3 -m venv venv && source venv/bin/activate
-
-     c. Backend
-         > pip install flask flask-cors numpy pandas scikit-learn
-
-5. Run Backend
-     > cd Backend && python main.py
-
-6. Run Frontend
-     > cd Frontend && npm run dev
-
-     
-
-
 # 🩺 Disease Prediction Website
 
 An AI-powered web application that predicts possible diseases based on symptoms provided by the user.  
@@ -38,7 +10,7 @@ The platform outputs:
 - Diet recommendations  
 - Additional advice  
 
-Developed as a **Final Year Engineering Project**, integrating a machine learning model (built by another developer) into a full-stack web app.
+Developed as a **Final Year Computer Science Project**, integrating a machine learning model (built by another developer) into a full-stack web app.
 
 ---
 
@@ -62,3 +34,42 @@ Follow the steps below to run the project locally.
 ## **1. Clone the repository**
 ```bash
 git clone https://github.com/RKYrude/Disease-Prediction
+```
+## 2. Navigate to the project directory
+```md
+cd Disease-Prediction
+```
+
+```md
+## 3. Install Dependencies
+```
+
+### A. Install Frontend Dependencies
+```bash
+cd Frontend
+npm install
+```
+
+### B. Create & Activate Python Virtual Environment
+#### macOS / Linux
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### C. Install Backend Dependencies
+```bash
+cd ../Backend
+pip install flask flask-cors numpy pandas scikit-learn
+```
+
+## 4. Run the Backend Server
+Make sure your virtual environment is activated, then run:
+```bash
+cd Backend
+python main.py
+```
+
+
+
+
